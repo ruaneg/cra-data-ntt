@@ -92,7 +92,11 @@ const CoinExtraDetail = (props: CoinExtraDetailTableProps) => {
   );
 };
 
-export default function CoinExtraDetails(props: any) {
+interface CoinExtraDetailsProps {
+  id: number;
+}
+
+export default function CoinExtraDetails(props: CoinExtraDetailsProps) {
   const { id } = props;
 
   // Custom hook to fetch coin information by id
