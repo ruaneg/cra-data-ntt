@@ -42,22 +42,22 @@ a. /coins/markets
 Make a call to the following endpoint to return the coins ordered by market_cap_desc,
 using the vs_currency as EUR. You can limit the per_page to show only ten results.
 b. Render this list on the UI showing the following information
-● Image
-● Name
-● Symbol
-● Current Price
-● High 24 hour Price
-● Low 24 hour Price
+ -  Image
+ -  Name
+ -  Symbol
+ -  Current Price
+ -  High 24 hour Price
+ -  Low 24 hour Price
 c. /coins/{id}
 Each item in this list should be clickable which will in return make another call to the API
 to return the following information about this coin.
-● Name
-● Symbol
-● Hashing algorithm
-● Description
-● Market cap in Euro
-● Homepage
-● Genesis Date
+ -  Name
+ -  Symbol
+ -  Hashing algorithm
+ -  Description
+ -  Market cap in Euro
+ -  Homepage
+ -  Genesis Date
 
 ### Materials & Resources
 It's OK to use an IDE, Stack Overflow, or whatever else you'd use when you're usually coding.
@@ -67,8 +67,8 @@ not to share the details of this project with others.
 
 ### Assessment
 We evaluate your submission based on the following things:
-● First and foremost, if you complete the project and deliver what was asked.
-● Does the UI look good? We’re looking for someone with an eye for detail.
-● Is your code commented and tested.
-● Finally, the quality of the code you submit. We're looking for simplicity, clarity and
+ -  First and foremost, if you complete the project and deliver what was asked.
+ -  Does the UI look good? We’re looking for someone with an eye for detail.
+ -  Is your code commented and tested.
+ -  Finally, the quality of the code you submit. We're looking for simplicity, clarity and
 readability over cleverness or flexibility.
