@@ -48,12 +48,6 @@ const CoinExtraDetail = (props: CoinExtraDetailTableProps) => {
           </ListItem>
           <ListItem>
             <ListItemText
-              primary="Genesis Date"
-              secondary={valueOrUknown(genesis_date)}
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
               primary="Homepage"
               secondary={valueOrUknown(homepage)}
             />
