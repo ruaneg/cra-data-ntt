@@ -1,7 +1,7 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import CoinGeckoCard from "./views/CoinGeckoCard";
+import CoinGecko from "./views/CoinGecko/CoinGecko";
 import Logo from "./components/Logo/Logo";
 import { Box } from "@mui/material";
 
@@ -22,8 +22,8 @@ export default function App() {
           <Logo />
         </Toolbar>
       </AppBar>
-      <Box display="flex" justifyContent="center" sx={{ m: 4 }}>
-        <CoinGeckoCard />
+      <Box display="flex" justifyContent="center">
+        <CoinGecko />
       </Box>
     </>
   );
