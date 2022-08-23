@@ -17,7 +17,7 @@ npm run start
 
 A server will start running.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-or view it on Github Pages [https://ruaneg.github.io/cra-data-ntt/](https://ruaneg.github.io/cra-data-ntt/)
+Alternatively, view it on Github Pages [https://ruaneg.github.io/cra-data-ntt/](https://ruaneg.github.io/cra-data-ntt/)
 
 ## Running the tests
 To run the test suite:
