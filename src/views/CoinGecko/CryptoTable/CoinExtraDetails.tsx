@@ -87,7 +87,7 @@ const CoinExtraDetail = (props: CoinExtraDetailTableProps) => {
 };
 
 interface CoinExtraDetailsProps {
-  id: number;
+  id: string;
 }
 
 export default function CoinExtraDetails(props: CoinExtraDetailsProps) {
