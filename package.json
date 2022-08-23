@@ -1,11 +1,12 @@
 {
   "name": "cra-data-ntt",
   "version": "1.0.0",
-  "private": true,
+  "homepage": "https://ruaneg.github.io/cra-data-ntt",
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
     "@mui/material": "latest",
+    "@mui/icons-material": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "react": "latest",
@@ -14,6 +15,8 @@
     "typescript": "latest"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -30,5 +33,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
