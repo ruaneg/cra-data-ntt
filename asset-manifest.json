@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/cra-data-ntt/static/js/main.5bfe204a.js",
+    "main.js": "/cra-data-ntt/static/js/main.1a65bb45.js",
     "index.html": "/cra-data-ntt/index.html",
-    "main.5bfe204a.js.map": "/cra-data-ntt/static/js/main.5bfe204a.js.map"
+    "main.1a65bb45.js.map": "/cra-data-ntt/static/js/main.1a65bb45.js.map"
   },
   "entrypoints": [
-    "static/js/main.5bfe204a.js"
+    "static/js/main.1a65bb45.js"
   ]
 }
