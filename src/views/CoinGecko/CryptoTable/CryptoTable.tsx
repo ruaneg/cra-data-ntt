@@ -16,10 +16,11 @@ const DESCRIPTION_TABLE = "Showing Coins by Market Capitalization";
 
 interface CryptoRowsCGProps {
   rows: Array<CGMarketList>;
+  page: number;
 }
 
 function CryptoTableContainer(rowsDataProps: CryptoRowsCGProps) {
-  const { rows } = rowsDataProps;
+  const { rows, page } = rowsDataProps;
 
   return rows ? (
     <>
@@ -43,7 +44,11 @@ function CryptoTableContainer(rowsDataProps: CryptoRowsCGProps) {
           </TableHead>
           <TableBody>
             {rows.map((row, index) => (
-              <CryptoTableRow key={row.id} row={row} index={index} />
+              <CryptoTableRow
+                key={row.id}
+                row={row}
+                index={index + (page - 1) * 10}
+              />
             ))}
           </TableBody>
         </Table>
@@ -67,7 +72,7 @@ export default function CryptoTable() {
     <>
       {marketCoinsResponse?.data?.length ? (
         <>
-          <CryptoTableContainer rows={marketCoinsResponse.data} />
+          <CryptoTableContainer rows={marketCoinsResponse.data} page={page} />
           <TablePaginationActions
             count={marketCoinsResponse?.data.length}
             page={page}
