@@ -108,11 +108,6 @@ export default function CoinExtraDetails(props: CoinExtraDetailsProps) {
 
   return (
     <Box sx={{ margin: 2, width: "60vw" }}>
-      {coinByIdResponse?.loading ? (
-        <Box display="flex" justifyContent="center" sx={{ m: 4 }}>
-          <CircularProgress />
-        </Box>
-      ) : null}
       {coinByIdResponse?.data ? (
         <CoinExtraDetail
           symbol={coinByIdResponse?.data?.symbol}
@@ -125,6 +120,11 @@ export default function CoinExtraDetails(props: CoinExtraDetailsProps) {
           genesisDate={coinByIdResponse?.data?.genesis_date}
           marketCap={coinByIdResponse?.data?.market_data?.market_cap.eur}
         />
+      ) : null}
+      {coinByIdResponse?.loading ? (
+        <Box display="flex" justifyContent="center" sx={{ m: 4 }}>
+          <CircularProgress />
+        </Box>
       ) : null}
     </Box>
   );

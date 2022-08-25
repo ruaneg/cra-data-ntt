@@ -65,11 +65,6 @@ export default function CryptoTable() {
 
   return (
     <>
-      {marketCoinsResponse?.loading ? (
-        <Box display="flex" justifyContent="center" sx={{ m: 16 }}>
-          <CircularProgress />
-        </Box>
-      ) : null}
       {marketCoinsResponse?.data?.length ? (
         <>
           <CryptoTableContainer rows={marketCoinsResponse.data} />
@@ -79,6 +74,11 @@ export default function CryptoTable() {
             onChangePage={handleChangePage}
           />
         </>
+      ) : null}
+      {marketCoinsResponse?.loading ? (
+        <Box display="flex" justifyContent="center" sx={{ m: 16 }}>
+          <CircularProgress />
+        </Box>
       ) : null}
     </>
   );
