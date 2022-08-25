@@ -1,5 +1,4 @@
 import React from "react";
-import CoinExtraDetail from "../CoinExtraDetail";
 
 describe("CoinExtraDetail Component", () => {
   // TODO: Mock useApiFetch

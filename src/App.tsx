@@ -1,9 +1,9 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
+import { Box } from "@mui/material";
 import CoinGecko from "./views/CoinGecko/CoinGecko";
 import Logo from "./components/Logo/Logo";
-import { Box } from "@mui/material";
 
 export default function App() {
   return (

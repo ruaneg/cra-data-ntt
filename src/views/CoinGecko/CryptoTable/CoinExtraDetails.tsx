@@ -1,33 +1,31 @@
 import { Box, CircularProgress, Grid } from "@mui/material";
 import React from "react";
-import { TApiResponse, useApiFetch } from "../../../hooks/useAPI";
-import { COIN_GECKO_API_BASE_URL } from "../CoinGecko";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { htmlDecode, valueOrUknown } from "../../../utils/utils";
-
-const COINS = "/coins/";
+import useApiFetch, { TApiResponse } from "../../../hooks/useAPI";
+import { COIN_GECKO_API_BASE_URL, COINS } from "../apiConstants";
 
 interface CoinExtraDetailTableProps {
   symbol: string;
   name: string;
-  hashing_algorithm: string;
+  hashingAlgorithm: string;
   description: string;
   homepage: string;
-  genesis_date: string;
-  market_cap: number;
+  genesisDate: string;
+  marketCap: number;
 }
 
 const CoinExtraDetail = (props: CoinExtraDetailTableProps) => {
   const {
     symbol,
     name,
-    hashing_algorithm,
+    hashingAlgorithm,
     description,
     homepage,
-    genesis_date,
-    market_cap,
+    genesisDate,
+    marketCap,
   } = props;
 
   return (
@@ -43,7 +41,7 @@ const CoinExtraDetail = (props: CoinExtraDetailTableProps) => {
           <ListItem>
             <ListItemText
               primary="Hashing algorithm"
-              secondary={valueOrUknown(hashing_algorithm)}
+              secondary={valueOrUknown(hashingAlgorithm)}
             />
           </ListItem>
           <ListItem>
@@ -60,14 +58,14 @@ const CoinExtraDetail = (props: CoinExtraDetailTableProps) => {
                   style: "currency",
                   currency: "EUR",
                   maximumFractionDigits: 0,
-                }).format(market_cap)
+                }).format(marketCap)
               )}
             />
           </ListItem>
           <ListItem>
             <ListItemText
               primary="Genesis Date"
-              secondary={valueOrUknown(genesis_date)}
+              secondary={valueOrUknown(genesisDate)}
             />
           </ListItem>
         </List>
@@ -86,6 +84,16 @@ const CoinExtraDetail = (props: CoinExtraDetailTableProps) => {
   );
 };
 
+interface CoinsApiResponse {
+  symbol: string;
+  name: string;
+  hashing_algorithm: string;
+  description: { en: string };
+  links: { homepage: Array<string> };
+  genesis_date: string;
+  market_data: { market_cap: { eur: number } };
+}
+
 interface CoinExtraDetailsProps {
   id: string;
 }
@@ -94,7 +102,7 @@ export default function CoinExtraDetails(props: CoinExtraDetailsProps) {
   const { id } = props;
 
   // Custom hook to fetch coin information by id
-  const coinByIdResponse: TApiResponse = useApiFetch(
+  const coinByIdResponse: TApiResponse<CoinsApiResponse> = useApiFetch(
     COIN_GECKO_API_BASE_URL + COINS + id
   );
 
@@ -104,15 +112,18 @@ export default function CoinExtraDetails(props: CoinExtraDetailsProps) {
         <Box display="flex" justifyContent="center" sx={{ m: 4 }}>
           <CircularProgress />
         </Box>
-      ) : coinByIdResponse?.data ? (
+      ) : null}
+      {coinByIdResponse?.data ? (
         <CoinExtraDetail
           symbol={coinByIdResponse?.data?.symbol}
           name={coinByIdResponse?.data?.name}
-          hashing_algorithm={coinByIdResponse?.data?.hashing_algorithm}
+          hashingAlgorithm={coinByIdResponse?.data?.hashing_algorithm}
           description={coinByIdResponse?.data?.description?.en}
-          homepage={coinByIdResponse?.data?.homepage?.filter(Boolean).join(",")}
-          genesis_date={coinByIdResponse?.data?.genesis_date}
-          market_cap={coinByIdResponse?.data?.market_data?.market_cap["eur"]}
+          homepage={coinByIdResponse?.data?.links?.homepage
+            ?.filter(Boolean)
+            .join(",")}
+          genesisDate={coinByIdResponse?.data?.genesis_date}
+          marketCap={coinByIdResponse?.data?.market_data?.market_cap.eur}
         />
       ) : null}
     </Box>

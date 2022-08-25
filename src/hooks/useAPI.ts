@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-export type TApiResponse = {
-  status: Number;
-  statusText: String;
-  data: any;
-  error: any;
-  loading: Boolean;
+export type TApiResponse<DataType> = {
+  status: number;
+  statusText: string;
+  data: DataType | undefined;
+  error?: string;
+  loading: boolean;
 };
 
 /**
@@ -13,30 +13,33 @@ export type TApiResponse = {
  * The hook provides a loading property for showing loading status, as well
  * as boilerplate for handling promises with fetch
  */
-export const useApiFetch = (url: string): TApiResponse => {
-  const [status, setStatus] = useState<Number>(0);
-  const [statusText, setStatusText] = useState<String>("");
-  const [data, setData] = useState<any>();
-  const [error, setError] = useState<any>();
+export default function useApiFetch<T>(url: string): TApiResponse<T> {
+  const [status, setStatus] = useState<number>(0);
+  const [statusText, setStatusText] = useState<string>("");
+  const [data, setData] = useState<T | undefined>();
+  const [error, setError] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
 
-  const getAPIData = async () => {
+  const getAPIData = useCallback(async (urlFetch: string) => {
     setLoading(true);
     try {
-      const apiResponse = await fetch(url, { mode: "cors" });
+      const apiResponse = await fetch(urlFetch);
       const json = await apiResponse.json();
       setStatus(apiResponse.status);
       setStatusText(apiResponse.statusText);
       setData(json);
-    } catch (error) {
-      setError(error);
+    } catch (errorMsg) {
+      let message;
+      if (errorMsg instanceof Error) message = errorMsg.message;
+      else message = String(errorMsg);
+      setError(message);
     }
     setLoading(false);
-  };
-
-  useEffect(() => {
-    getAPIData();
   }, []);
 
+  useEffect(() => {
+    getAPIData(url);
+  }, [url, getAPIData]);
+
   return { status, statusText, data, error, loading };
-};
+}

@@ -1,5 +1,4 @@
 import React from "react";
-import CryptoTableRow from "../CryptoTableRow";
 
 describe("CryptoTable Component", () => {
   // TODO:

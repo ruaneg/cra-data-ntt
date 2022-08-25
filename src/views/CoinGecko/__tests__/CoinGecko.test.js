@@ -1,5 +1,4 @@
 import React from "react";
-import CoinGecko from "../CoinGecko";
 
 describe("CoinGecko Component", () => {
   // TODO: Mock useApiFetch

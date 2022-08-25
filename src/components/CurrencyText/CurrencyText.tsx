@@ -1,13 +1,13 @@
-import Typography from "@mui/material/Typography";
 import React from "react";
+import Typography from "@mui/material/Typography";
 
-interface CurrencyText {
+interface CurrencyTextProps {
   value: number;
   color?: string | "text.primary";
 }
 
 /**  This could be configurable with extra props for locales */
-export default function CurrencyText(currencyTextProps: CurrencyText) {
+export default function CurrencyText(currencyTextProps: CurrencyTextProps) {
   return (
     <Typography color={currencyTextProps?.color}>
       {new Intl.NumberFormat("en-US", {
